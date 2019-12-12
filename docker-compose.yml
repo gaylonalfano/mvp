@@ -7,13 +7,23 @@ services:
   # Tancho is the codename for Backend
   tancho:
     build: ./backend/
-    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload --proxy-headers
     volumes:
       - ./backend:/tancho
     ports:
       - "8000:8000"
     depends_on:
       - mongo
+
+  chica:
+    build: ./frontend
+    restart: always
+    volumes:
+      - ./frontend/nginx.site.conf:/etc/nginx/conf.d/nginx.site.conf
+    ports:
+      - "80:80"
+    depends_on:
+      - tancho
 
   # MongoDB as a service
   mongo:
