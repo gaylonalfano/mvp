@@ -31,22 +31,6 @@ app.include_router(
     responses={404: {"description": "Not found"}},
 )
 
-if config.CONF.get('fastapi', {}).get('debug', False):
-    from starlette.middleware.cors import CORSMiddleware
-    origins = [
-        "http://tancho",
-        "http://tancho:8080",
-        "http://localhost",
-        "http://localhost:8080",
-    ]
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=origins,
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
-
 
 @app.on_event("startup")
 async def app_startup():
