@@ -1,6 +1,6 @@
 const API = {
-  protocol: 'http://',
-  host: 'localhost:8000',
+  protocol: '',
+  host: '',
   api: '/api/v1',
 };
 
