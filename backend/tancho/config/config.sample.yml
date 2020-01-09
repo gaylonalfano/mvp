@@ -11,4 +11,4 @@ databases:
     USER: 'tancho_user'
     PASSWORD: '4dm1n4dm1n'
     HOST: 'mongo'
-    PORT: '27017'
+    PORT: 27017
